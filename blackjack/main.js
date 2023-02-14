@@ -25,4 +25,14 @@ function deckBuilder() {
   }
   return cards;
 }
-console.log(deckBuilder());
+function randomCard(cards) {
+  const random = Math.floor(Math.random() * 51);
+  const cardValue = cards[random].value;
+  const cardSuit = cards[random].suit;
+  console.log(cardValue, cardSuit);
+  console.log(cards.splice(random, 1));
+}
+
+const cards = deckBuilder();
+randomCard(cards);
+randomCard(cards);
