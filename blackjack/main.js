@@ -14,25 +14,35 @@ function deckBuilder() {
     "Q",
     "K",
   ];
-  const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
-  const cards = [];
+  let suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
+  let score = [[1, 11], 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
+  let cards = [];
   for (let s = 0; s < suits.length; s++) {
     for (let v = 0; v < values.length; v++) {
       const value = values[v];
       const suit = suits[s];
-      cards.push({ value, suit });
+      const sc = score[v];
+      cards.push({ value, suit, sc });
     }
   }
   return cards;
 }
-function randomCard(cards) {
-  const random = Math.floor(Math.random() * 51);
-  const cardValue = cards[random].value;
-  const cardSuit = cards[random].suit;
-  console.log(cardValue, cardSuit);
-  console.log(cards.splice(random, 1));
+let hand = [];
+function playerDraw(cards) {
+  let random = Math.floor(Math.random() * 51);
+  let cardValue = cards[random].value;
+  let cardSuit = cards[random].suit;
+  let score = cards[random].sc;
+  hand.push({ cardValue, cardSuit, score });
+  cards.splice(random, 1);
 }
-
+function draw() {
+  playerDraw(cards);
+  console.log(hand);
+}
 const cards = deckBuilder();
-randomCard(cards);
-randomCard(cards);
+playerDraw(cards);
+playerDraw(cards);
+let totalScore;
+let add = hand.forEach((sc) => hand.score + totalScore);
+console.log(hand);
