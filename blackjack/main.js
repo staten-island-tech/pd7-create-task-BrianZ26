@@ -30,7 +30,7 @@ function deckBuilder() {
 let hand = [];
 let totalScore = [];
 function playerDraw(cards) {
-  let random = Math.floor(Math.random() * 51);
+  let random = Math.floor(Math.random() * cards.length);
   let cardValue = cards[random].value;
   let cardSuit = cards[random].suit;
   let score = cards[random].sc;
@@ -38,19 +38,27 @@ function playerDraw(cards) {
   totalScore.push(score);
   cards.splice(random, 1);
 }
-function draw() {
-  playerDraw(cards);
-  console.log(hand);
-}
 
 const cards = deckBuilder();
-playerDraw(cards);
-playerDraw(cards);
-playerDraw(cards);
-playerDraw(cards);
-playerDraw(cards);
-let sum = 0;
-totalScore.forEach((el) => {
-  sum += el;
-});
-console.log(hand, sum);
+function play() {
+  playerDraw(cards);
+  playerDraw(cards);
+  let sum = 0;
+  totalScore.forEach((el) => {
+    sum += el;
+  });
+  console.log(hand, sum);
+}
+function draw() {
+  playerDraw(cards);
+  let sum = 0;
+  totalScore.forEach((el) => {
+    sum += el;
+  });
+  console.log(hand, sum);
+  if (sum > 21) {
+    console.log("lose");
+  }
+}
+play();
+draw();

@@ -4,7 +4,21 @@ body,
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 62.5;
+  font-size: 40;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+button {
+  background-color: #607987;
+  color: #ffffff;
+  text-align: center;
+}
+button:hover {
+  transform: scale(1.1);
 }
 .title {
   text-align: center;
