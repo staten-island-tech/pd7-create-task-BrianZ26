@@ -27,6 +27,10 @@ function deckBuilder() {
   }
   return cards;
 }
+const dom = {
+  play: document.getElementById("play"),
+  card: document.getElementById("draw"),
+};
 let hand = [];
 let totalScore = [];
 function playerDraw(cards) {
@@ -40,7 +44,9 @@ function playerDraw(cards) {
 }
 
 const cards = deckBuilder();
-function play() {
+dom.play.addEventListener("click", function play() {
+  hand = [];
+  totalScore = [];
   playerDraw(cards);
   playerDraw(cards);
   let sum = 0;
@@ -48,8 +54,8 @@ function play() {
     sum += el;
   });
   console.log(hand, sum);
-}
-function draw() {
+});
+dom.card.addEventListener("click", function draw() {
   playerDraw(cards);
   let sum = 0;
   totalScore.forEach((el) => {
@@ -58,7 +64,7 @@ function draw() {
   console.log(hand, sum);
   if (sum > 21) {
     console.log("lose");
+    hand = [];
+    totalScore = [];
   }
-}
-play();
-draw();
+});
