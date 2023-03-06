@@ -15,14 +15,14 @@ function deckBuilder() {
     "K",
   ];
   let suits = ["♦", "♣", "♥", "♠"];
-  let cards = [];
+  let deck = [];
   for (let s = 0; s < suits.length; s++) {
     for (let v = 0; v < values.length; v++) {
       const value = values[v];
       const suit = suits[s];
-      cards.push({ value, suit });
+      deck.push({ suit, value });
     }
   }
-  return cards;
+  return deck;
 }
 const cards = deckBuilder();
