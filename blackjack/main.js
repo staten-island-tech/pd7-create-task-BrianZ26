@@ -14,7 +14,7 @@ function deckBuilder() {
     "Q",
     "K",
   ];
-  let suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
+  let suits = ["♦", "♣", "♥", "♠"];
   let score = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
   let cards = [];
   for (let s = 0; s < suits.length; s++) {
