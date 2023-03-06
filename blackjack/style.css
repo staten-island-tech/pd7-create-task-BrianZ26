@@ -6,7 +6,10 @@ body,
   box-sizing: border-box;
   font-size: 40;
 }
-.main {
+.play-button {
+  align-self: center;
+}
+.player-hand {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
