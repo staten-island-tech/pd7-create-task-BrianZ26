@@ -26,3 +26,10 @@ function deckBuilder() {
   return deck;
 }
 const cards = deckBuilder();
+const drawRandomCard = () => {
+  const cardNum = Math.floor(Math.random() * deck.length);
+  const card = deck[cardNum];
+  deck.splice(cardNum, 1);
+  console.log(card);
+  return card;
+};
