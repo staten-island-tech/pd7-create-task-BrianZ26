@@ -1,3 +1,4 @@
+console.log(1);
 const DOM = {
   playercards: document.getElementById("player-hand"),
   dealercards: document.getElementById("dealer-hand"),
