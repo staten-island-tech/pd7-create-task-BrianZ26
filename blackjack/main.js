@@ -1,3 +1,7 @@
+const DOM = {
+  playercards: document.getElementById("player-hand"),
+  dealercards: document.getElementById("dealer-hand"),
+};
 const values = [
   "A",
   "2",
@@ -37,4 +41,12 @@ const drawRandomCard = () => {
   deck.splice(cardNum, 1);
   console.log(card);
   return card;
+};
+
+const dealhands = () => {
+  const dealerHand = [drawRandomCard(), drawRandomCard()];
+  dealerHand.forEach((card) => {
+    DOM.dealercards.insertAdjacentHTML("afterend"``);
+  });
+  const playerHand = [drawRandomCard(), drawRandomCard()];
 };

@@ -43,3 +43,12 @@ button {
 button:hover {
   transform: scale(1.1);
 }
+.cards {
+  height: 120px;
+  width: 120px;
+  border: 2px solid black;
+  padding-top: 60px;
+  border-radius: 10px;
+  font-size: 3rem;
+  text-align: center;
+}
