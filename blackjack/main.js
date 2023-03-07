@@ -30,6 +30,7 @@ const deckBuilder = () => {
     values.forEach((value) => {
       const card = value + suit;
       deck.push(card);
+      console.log(card);
     });
   });
   return deck;
