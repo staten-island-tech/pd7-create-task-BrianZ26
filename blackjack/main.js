@@ -57,3 +57,4 @@ const dealhands = () => {
     );
   });
 };
+dealhands;
