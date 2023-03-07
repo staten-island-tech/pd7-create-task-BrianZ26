@@ -41,6 +41,7 @@ button:hover {
   transform: scale(1.1);
 }
 .cards {
+  padding-top: 60px;
   height: 175px;
   width: 120px;
   border: 2px solid black;

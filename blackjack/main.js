@@ -46,7 +46,14 @@ const drawRandomCard = () => {
 const dealhands = () => {
   const dealerHand = [drawRandomCard(), drawRandomCard()];
   dealerHand.forEach((card) => {
-    DOM.dealercards.insertAdjacentHTML("afterend"``);
+    DOM.dealercards.insertAdjacentHTML(
+      "afterend"`<div class="cards">${card}</div>`
+    );
   });
   const playerHand = [drawRandomCard(), drawRandomCard()];
+  playerHand.forEach((card) => {
+    DOM.playercards.insertAdjacentHTML(
+      "afterend"`<div class="cards">${card}</div>`
+    );
+  });
 };
