@@ -33,3 +33,4 @@ const drawRandomCard = () => {
   console.log(card);
   return card;
 };
+console.log(drawRandomCard);
