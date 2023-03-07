@@ -1,4 +1,3 @@
-console.log(1);
 const DOM = {
   playercards: document.getElementById("player-hand"),
   dealercards: document.getElementById("dealer-hand"),
@@ -31,12 +30,11 @@ const deckBuilder = () => {
     values.forEach((value) => {
       const card = value + suit;
       deck.push(card);
-      console.log(card);
     });
   });
   return deck;
 };
-
+console.log(deck);
 const drawRandomCard = () => {
   const cardNum = Math.floor(Math.random() * deck.length);
   const card = deck[cardNum];
