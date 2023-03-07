@@ -22,15 +22,15 @@ let playerHand = [];
 
 const deckBuilder = () => {
   let deck = [];
-  for (let s = 0; s < suits.length; s++) {
-    for (let v = 0; v < values.length; v++) {
-      const value = values[v];
-      const suit = suits[s];
-      deck.push({ suit, value });
-    }
-  }
+  suits.forEach((suit) => {
+    values.forEach((value) => {
+      const card = value + suit;
+      deck.push(card);
+    });
+  });
   return deck;
 };
+
 const drawRandomCard = () => {
   const cardNum = Math.floor(Math.random() * deck.length);
   const card = deck[cardNum];
