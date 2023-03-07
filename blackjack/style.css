@@ -7,7 +7,8 @@ body,
   font-size: 40;
 }
 .play-button {
-  align-self: center;
+  display: inline-block;
+  text-align: center;
 }
 .player-hand {
   display: flex;
