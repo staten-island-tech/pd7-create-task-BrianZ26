@@ -6,9 +6,20 @@ body,
   box-sizing: border-box;
   font-size: 40;
 }
+.page-top {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
 .play-button {
   display: inline-block;
   text-align: center;
+}
+.player-interface {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 .player-hand {
   display: flex;
