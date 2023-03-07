@@ -34,7 +34,7 @@ const deckBuilder = () => {
   });
   return deck;
 };
-console.log(deck);
+
 const drawRandomCard = () => {
   const cardNum = Math.floor(Math.random() * deck.length);
   const card = deck[cardNum];
@@ -58,3 +58,4 @@ const dealhands = () => {
   });
 };
 dealhands;
+console.log(deck);
