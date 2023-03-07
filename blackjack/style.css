@@ -17,7 +17,8 @@ body,
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.player-hand {
+.player-hand,
+.dealer-hand {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
