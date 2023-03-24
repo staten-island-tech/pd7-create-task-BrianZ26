@@ -21,7 +21,7 @@ body,
 .dealer-hand {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .title {
@@ -36,6 +36,8 @@ button {
   height: 40px;
   padding: 10px 16px;
   text-align: center;
+  margin-top: 20;
+  margin-bottom: 20;
 }
 button:hover {
   transform: scale(1.1);
@@ -48,4 +50,14 @@ button:hover {
   padding: auto;
   border-radius: 10px;
   text-align: center;
+  margin-top: 20;
+  margin-bottom: 20;
+}
+h2 {
+  font-size: 50%;
+  background-color: #013220;
+  border-radius: 8px;
+  color: #ffffff;
+  text-align: center;
+  margin: auto;
 }
