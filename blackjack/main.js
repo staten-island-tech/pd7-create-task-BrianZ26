@@ -1,4 +1,6 @@
 const DOM = {
+  hit: document.getElementById("hit"),
+  stay: document.getElementById("stay"),
   playercards: document.getElementById("player-hand"),
   dealercards: document.getElementById("dealer-hand"),
   playcards: document.getElementById("play"),
@@ -23,20 +25,14 @@ function drawRandomCard() {
   const cardNum = Math.floor(Math.random() * deck.length);
   const card = deck[cardNum];
   deck.splice(cardNum, 1);
+  if (deck.length <= 2) {
+    deckBuilder();
+  }
   return card;
-}
-function calcValue() {
-  let value = 0;
-  playerHand.forEach((card) => {
-    if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
-      value += 10;
-    } else value += card[0];
-  });
 }
 function playerHit() {}
 function dealhands() {
   const dealerHand = [drawRandomCard(), drawRandomCard()];
-  calcValue(dealerHand);
   dealerHand.forEach((card) => {
     DOM.dealercards.insertAdjacentHTML(
       "beforeend",
@@ -44,18 +40,28 @@ function dealhands() {
     );
   });
   const playerHand = [drawRandomCard(), drawRandomCard()];
-  calcValue(playerHand);
   console.log(playerHand);
-  let pScore = 0;
   playerHand.forEach((card) => {
-    console.log(pScore);
     DOM.playercards.insertAdjacentHTML(
       "beforeend",
       `<div class="cards">${card}</div>`
     );
   });
+  DOM.hit.addEventListener("click", function playerHit() {
+    playerHand.push(drawRandomCard());
+    console.log(playerHand);
+    DOM.playercards.innerHTML = "";
+    playerHand.forEach((card) => {
+      DOM.playercards.insertAdjacentHTML(
+        "beforeend",
+        `<div class="cards">${card}</div>`
+      );
+    });
+  });
 }
 DOM.playcards.addEventListener("click", function playgame() {
+  DOM.playercards.innerHTML = "";
+  DOM.dealercards.innerHTML = "";
   deckBuilder();
   dealhands();
 });
