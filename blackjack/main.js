@@ -9,13 +9,12 @@ const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 const suits = ["♦", "♣", "♥", "♠"];
 
 let dealerHand = [];
-
 let playerHand = [];
 let deck = [];
 function deckBuilder() {
   suits.forEach((suit) => {
     values.forEach((value) => {
-      const card = [value + suit];
+      const card = [value, suit];
       deck.push(card);
     });
   });
@@ -31,24 +30,24 @@ function drawRandomCard() {
   return card;
 }
 function dealhands() {
-  const dealerHand = [drawRandomCard(), drawRandomCard()];
+  let dealerHand = [drawRandomCard(), drawRandomCard()];
   dealerHand.forEach((card) => {
     DOM.dealercards.insertAdjacentHTML(
       "beforeend",
       `<div class="cards">${card}</div>`
     );
   });
-  const playerHand = [drawRandomCard(), drawRandomCard()];
-  console.log(playerHand);
+  let playerHand = [drawRandomCard(), drawRandomCard()];
   playerHand.forEach((card) => {
     DOM.playercards.insertAdjacentHTML(
       "beforeend",
       `<div class="cards">${card}</div>`
     );
   });
+  let ps = calcValue(playerHand);
+  console.log("you have " + ps);
   DOM.hit.addEventListener("click", function playerHit() {
     playerHand.push(drawRandomCard());
-    console.log(playerHand);
     DOM.playercards.innerHTML = "";
     playerHand.forEach((card) => {
       DOM.playercards.insertAdjacentHTML(
@@ -57,7 +56,33 @@ function dealhands() {
       );
     });
     let ps = calcValue(playerHand);
-    console.log(ps);
+    if (ps > 21) {
+      console.log("Lose");
+      alert("Lose, your hand was " + ps);
+      DOM.playercards.innerHTML = "";
+      DOM.dealercards.innerHTML = "";
+      dealerHand = [];
+      playerHand = [];
+    }
+    console.log("you have " + ps);
+  });
+  DOM.stay.addEventListener("click", function dealerhit() {
+    let ds = calcValue(dealerHand);
+    console.log(ds);
+    if (ds <= 16) {
+      dealerHand.push(drawRandomCard());
+      let ds = calcValue(dealerHand);
+      DOM.dealercards.innerHTML = "";
+      dealerHand.forEach((card) => {
+        DOM.dealercards.insertAdjacentHTML(
+          "beforeend",
+          `<div class="cards">${card}</div>`
+        );
+      });
+    }
+    if (ds > 21) {
+      console.log("Lose");
+    }
   });
 }
 const calcValue = (hand) => {
@@ -70,8 +95,8 @@ const calcValue = (hand) => {
         value += Number(card[0]);
       }
     }
-    console.log(value);
   });
+  return value;
 };
 
 function playgame() {
