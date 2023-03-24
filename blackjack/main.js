@@ -30,7 +30,6 @@ function drawRandomCard() {
   }
   return card;
 }
-function playerHit() {}
 function dealhands() {
   const dealerHand = [drawRandomCard(), drawRandomCard()];
   dealerHand.forEach((card) => {
@@ -57,11 +56,28 @@ function dealhands() {
         `<div class="cards">${card}</div>`
       );
     });
+    let ps = calcValue(playerHand);
+    console.log(ps);
   });
 }
-DOM.playcards.addEventListener("click", function playgame() {
+const calcValue = (hand) => {
+  let value = 0;
+  hand.forEach((card) => {
+    if (card.length === 2) {
+      if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
+        value += 10;
+      } else {
+        value += Number(card[0]);
+      }
+    }
+    console.log(value);
+  });
+};
+
+function playgame() {
   DOM.playercards.innerHTML = "";
   DOM.dealercards.innerHTML = "";
   deckBuilder();
   dealhands();
-});
+}
+DOM.playcards.addEventListener("click", playgame);
