@@ -46,6 +46,8 @@ function dealhands() {
   });
   let ps = calcValue(playerHand);
   console.log("you have " + ps);
+  let ds = calcValue(dealerHand);
+  console.log("dealer has " + ds);
   DOM.hit.addEventListener("click", function playerHit() {
     playerHand.push(drawRandomCard());
     DOM.playercards.innerHTML = "";
@@ -59,19 +61,16 @@ function dealhands() {
     if (ps > 21) {
       console.log("Lose");
       alert("Lose, your hand was " + ps);
-      DOM.playercards.innerHTML = "";
-      DOM.dealercards.innerHTML = "";
-      dealerHand = [];
-      playerHand = [];
+      location.reload();
     }
     console.log("you have " + ps);
   });
   DOM.stay.addEventListener("click", function dealerhit() {
     let ds = calcValue(dealerHand);
-    console.log(ds);
-    if (ds <= 16) {
+    while (ds <= 16) {
       dealerHand.push(drawRandomCard());
-      let ds = calcValue(dealerHand);
+      ds = calcValue(dealerHand);
+      console.log(ds);
       DOM.dealercards.innerHTML = "";
       dealerHand.forEach((card) => {
         DOM.dealercards.insertAdjacentHTML(
@@ -81,10 +80,25 @@ function dealhands() {
       });
     }
     if (ds > 21) {
-      console.log("Lose");
+      console.log("Dealer Lose " + ds);
+      alert("Win, dealer bust!");
+      location.reload();
+    } else {
+      let pdifference = 21 - ps;
+      let ddiffernce = 21 - ds;
+      console.log(pdifference);
+      console.log(ddiffernce);
+      if (pdifference < ddiffernce) {
+        alert("win!");
+        location.reload();
+      } else {
+        alert("Lose!");
+        location.reload();
+      }
     }
   });
 }
+
 const calcValue = (hand) => {
   let value = 0;
   hand.forEach((card) => {
